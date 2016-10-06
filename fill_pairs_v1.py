@@ -37,11 +37,11 @@ for read in f:
 for record in SeqIO.parse(fasta,"fasta"):
     for read in read_tuples:
         if read[1] < read[2]:
-            #outfile.write(">%s\n%s\n" %(read[0],str(record.seq[int(read[1])-1:int(read[2])]).upper()))
-            print "%s,%d,%d" %(read[0],int(read[1])-1,int(read[2]))
+            outfile.write(">%s\n%s\n" %(read[0],str(record.seq[int(read[1])-1:int(read[2])]).upper()))
+            #print "%s,%d,%d" %(read[0],int(read[1])-1,int(read[2]))
         elif read[1] > read[2]:
-            #outfile.write(">%s\n%s\n" %(read[0],str(record.seq[int(read[2])-1:int(read[1])].reverse_complement()).upper()))
-            print "%s,%d,%d" %(read[0],int(read[2])-1,int(read[1]))
+            outfile.write(">%s\n%s\n" %(read[0],str(record.seq[int(read[2])-1:int(read[1])].reverse_complement()).upper()))
+            #print "%s,%d,%d" %(read[0],int(read[2])-1,int(read[1]))
 
 outfile.close()
 fasta.close()
